@@ -7,9 +7,10 @@ export interface TextProps {
     children: ReactNode;
     asChild?: boolean;
     textColor?: number;
+    className?: string;
 }
 
-export function Text ({textColor=100 , children, asChild, size='sm'}: TextProps) {
+export function Text ({children, className, asChild, size='sm', textColor=100}: TextProps) {
     const Comp = asChild ? Slot : 'span';
     return(
         <Comp className={clsx(
@@ -25,7 +26,8 @@ export function Text ({textColor=100 , children, asChild, size='sm'}: TextProps)
                 'text-gray-400': textColor === 400,
                 'text-gray-800': textColor === 800,
                 'text-gray-900': textColor === 900
-            }
+            }, 
+            className,
             )}>
                {children}
         </Comp>
